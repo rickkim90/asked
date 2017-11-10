@@ -1,0 +1,13 @@
+<h1>ASKED</h1>
+<form action="/asked/show/">
+  공개선택 : 
+  <select name="name">
+    <option value="XXX">익명</option>
+    <option value="<%= session[:user_email] %>">공개</option>
+  </select>
+  질 문 : <input type="text" name="question">
+  <input type="submit">
+<% @questions.each do |q| %>
+<p>이름 : <%= q.who %></p>
+<p>질문 : <%= q.question %></p>
+<% end %>

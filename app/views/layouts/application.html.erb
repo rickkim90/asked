@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<!-- 만약 유져가 로그인을 하지 않았을 경우, 로그인/회원가입-->
+<!-- 만약 유져가 로그인 되어있으면, 로그아웃-->
+<% if session[:user_email].nil? %>
+  <a href="/asked/login">로그인</a>
+  <a href="/asked/sign_up">회원가입</a>
+<% else %>
+  <a href="/asked/logout">로그아웃</a>
+  <p><%= session[:user_email] %>님 환영합니다.</p>
+<% end %>
+
+
+<%= yield %>
+
+</body>
+</html>
